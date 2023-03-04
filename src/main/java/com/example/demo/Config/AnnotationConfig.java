@@ -1,9 +1,9 @@
 package com.example.demo.Config;
 
 import lombok.extern.apachecommons.CommonsLog;
-import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,13 +16,11 @@ public class AnnotationConfig {
     public void myAnnotationMethod() {
     }
 
-    @Before("myAnnotationMethod()")
-    public void logsBefore() {
+    @Around("myAnnotationMethod()")
+    public Object logsBefore(ProceedingJoinPoint pjp) throws Throwable {
         log.info("POST CART BEFORE");
-    }
-
-    @After("myAnnotationMethod()")
-    public void logsAfter() {
+        Object proceed = pjp.proceed();
         log.info("POST CART AFTER");
+        return proceed;
     }
 }
