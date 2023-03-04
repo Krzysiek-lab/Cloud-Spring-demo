@@ -21,7 +21,6 @@ public class AnnotationConfig {
         log.info("POST CART BEFORE");
     }
 
-
     @After("myAnnotationMethod()")
     public void logsAfter() {
         log.info("POST CART AFTER");
