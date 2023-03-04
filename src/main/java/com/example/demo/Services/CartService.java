@@ -24,7 +24,8 @@ public class CartService implements CartServiceImpl {
     private CartMapper cartMapper;
 
 
-    @Transactional
+    @Transactional//(propagation = Propagation.SUPPORTS)
+    @Override
     public ResponseEntity<List<CartDto>> getCarts() {
         return new ResponseEntity<>(cartRepository.findAll().stream()
                 .map(e -> cartMapper.mapCartToDto(e)).collect(Collectors.toList()), HttpStatus.ACCEPTED);
