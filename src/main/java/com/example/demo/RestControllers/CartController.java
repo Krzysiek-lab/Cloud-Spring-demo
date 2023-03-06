@@ -1,6 +1,7 @@
 package com.example.demo.RestControllers;
 
 
+import com.example.demo.Annotations.MyAnnotation;
 import com.example.demo.Dtos.CartDto;
 import com.example.demo.Entity.ShoppingCart;
 import com.example.demo.Services.CartService;
@@ -26,6 +27,7 @@ public class CartController {
     }
 
     @PostMapping("/add")
+    @MyAnnotation
     public ResponseEntity<ShoppingCart> addCart(@RequestBody @Valid CartDto cartDto) {
         return new ResponseEntity<>(cartService.addCart(cartDto), HttpStatus.CREATED);
     }

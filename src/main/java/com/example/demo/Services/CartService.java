@@ -1,6 +1,5 @@
 package com.example.demo.Services;
 
-import com.example.demo.Annotations.MyAnnotation;
 import com.example.demo.Dtos.CartDto;
 import com.example.demo.Dtos.CartServiceImpl;
 import com.example.demo.Entity.ShoppingCart;
@@ -32,7 +31,6 @@ public class CartService implements CartServiceImpl {
     }
 
     @Override
-    @MyAnnotation
     public ShoppingCart addCart(@RequestBody CartDto cartDto) {
         var cart = cartMapper.mapCartDtoToCart(cartDto);
         return cartRepository.save(cart);
