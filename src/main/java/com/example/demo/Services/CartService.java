@@ -1,15 +1,17 @@
 package com.example.demo.Services;
 
+import com.example.demo.Annotations.MyAnnotation;
 import com.example.demo.Dtos.CartDto;
 import com.example.demo.Dtos.CartServiceImpl;
 import com.example.demo.Entity.ShoppingCart;
 import com.example.demo.Mappers.CartMapper;
 import com.example.demo.Repositories.CartRepository;
-import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -23,7 +25,7 @@ public class CartService implements CartServiceImpl {
     private CartMapper cartMapper;
 
 
-    @Transactional//(propagation = Propagation.SUPPORTS)
+    @Transactional(propagation = Propagation.SUPPORTS)// ale nie trzeba propagacji dodawac
     @Override
     public ResponseEntity<List<CartDto>> getCarts() {
         return new ResponseEntity<>(cartRepository.findAll().stream()
@@ -31,6 +33,7 @@ public class CartService implements CartServiceImpl {
     }
 
     @Override
+    @MyAnnotation
     public ShoppingCart addCart(@RequestBody CartDto cartDto) {
         var cart = cartMapper.mapCartDtoToCart(cartDto);
         return cartRepository.save(cart);
