@@ -3,6 +3,6 @@ spring:
     config:
       server:
         git:
-          uri:path-to-git-repository
+          uri: C:\Users\kignatiuk\Desktop\demo\.git
 server:
   port: 8888
