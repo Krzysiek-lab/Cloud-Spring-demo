@@ -1,7 +1,7 @@
 package com.example.demo.RestControllers;
 
 
-import com.example.demo.Annotations.MyAnnotation;
+
 import com.example.demo.Dtos.CartDto;
 import com.example.demo.Entity.ShoppingCart;
 import com.example.demo.Services.CartService;
@@ -20,6 +20,12 @@ import java.util.List;
 public class CartController {
 
     private CartService cartService;
+
+    @GetMapping("/something")
+    @ResponseBody
+    public String getString() {
+        return "Eureka";
+    }
 
     @GetMapping("/get")
     public ResponseEntity<List<CartDto>> getCarts() {
