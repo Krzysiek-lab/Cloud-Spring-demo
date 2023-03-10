@@ -3,6 +3,6 @@ spring:
     config:
       server:
         git:
-          https://github.com/Krzysiek-lab/demo.git
+          uri: https://github.com/Krzysiek-lab/demo
 server:
   port: 8888
