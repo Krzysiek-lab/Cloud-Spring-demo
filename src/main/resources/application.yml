@@ -3,6 +3,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/Krzysiek-lab/demo
+          uri: https://github.com/Krzysiek-lab/demo/blob/master/app-1.properties
+          search-paths: ""
 server:
   port: 8888
